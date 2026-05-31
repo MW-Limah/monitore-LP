@@ -13,17 +13,52 @@ html {
   --accent-color: rgb(96, 96, 175);
 }
 
-header {
+.header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  padding: 1rem 2rem;
+  background-color: #fff;
+}
+
+.navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 4%;
+  z-index: 10;
+  gap: 1.5rem;
+}
+
+.navbar ul {
+  display: block;
   font-family: "Quantico", sans-serif;
+}
+
+.navbar .menu li {
+  list-style: none;
+  display: inline-block;
+}
+
+.navbar .menu li a {
+  display: block;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease-out,
+    color 0.2s;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 25px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+  transform: translateY(-2px);
+  color: rgb(96, 96, 175);
 }
 
 header,
 header a,
-nav a {
+.navbar a {
   color: var(--primary-font-color);
 }
 
@@ -45,27 +80,26 @@ nav a {
   font-size: 30px;
 }
 
-nav {
-  display: flex;
-  gap: 1.5rem;
+.menu-btn {
+  font-size: 23px;
+  cursor: pointer;
+  display: none;
+  z-index: 999;
+  border: none;
+  background: none;
 }
 
-nav a {
-  font-family: "Quantico", sans-serif;
-  font-size: 20px;
-  text-decoration: none;
-  transition:
-    transform 0.2s ease-out,
-    color 0.2s;
+.btn-download-li {
+  display: none;
 }
 
-nav a:hover {
-  text-decoration: underline;
-  transform: translateY(-2px);
-  color: rgb(96, 96, 175);
+#btn-download:hover {
+  background-color: transparent;
+  color: var(--primary-font-color);
+  border-color: var(--primary-font-color);
 }
 
-.btn-download {
+#btn-download {
   font-family: "Quantico", sans-serif;
   font-size: 16px;
   border: 2px solid var(--accent-color);
@@ -74,13 +108,8 @@ nav a:hover {
   text-decoration: none;
   color: #fff;
   background-color: var(--accent-color);
+  box-shadow: 0 8px 25px rgba(96, 96, 175, 0.4);
   transition: all 0.3s ease;
-}
-
-.btn-download:hover {
-  background-color: transparent;
-  color: var(--primary-font-color);
-  border-color: var(--primary-font-color);
 }
 
 /* Hero Section */
@@ -188,27 +217,6 @@ nav a:hover {
   }
   100% {
     transform: translateY(0px);
-  }
-}
-
-@media (max-width: 968px) {
-  .hero {
-    flex-direction: column; /* Joga a imagem para baixo do texto no celular */
-    text-align: center;
-    padding: 8rem 4% 3rem 4%;
-    gap: 3rem;
-  }
-
-  .hero-content h1 {
-    font-size: 2.2rem;
-  }
-
-  .cta-buttons {
-    justify-content: center; /* Centraliza os botões no mobile */
-  }
-
-  .hero-image img {
-    max-height: 400px; /* Diminui o celular em telas menores */
   }
 }
 
@@ -374,24 +382,4 @@ footer {
 footer p {
   font-size: 0.85rem;
   color: #4a5568;
-}
-
-@media (max-width: 768px) {
-  .final-cta {
-    padding: 4rem 6%;
-  }
-
-  .final-cta h2 {
-    font-size: 1.8rem;
-  }
-
-  .btn-secondary {
-    width: 100%; /* Botão ocupa a largura total no celular para facilitar o toque */
-    padding: 1rem 1.5rem;
-  }
-
-  .footer-links {
-    flex-direction: column; /* Links empilhados no mobile */
-    gap: 1rem;
-  }
 }

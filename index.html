@@ -8,7 +8,12 @@
       name="description"
       content="Baixe o Monitore e transforme a experiência escolar dos seus filhos. Aqui você pode acompanhar em tempo real o desempenho dos seus filhos. Disponível para IOS, Android e Web"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/media-queries.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,15 +23,34 @@
     <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <img src="./assets/logo.png" alt="Logo do Monitore" />
-        <p>Monitore</p>
-      </div>
-      <nav>
-        <a href="#">Início</a>
-        <a href="#">Sobre Nós</a>
-        <a href="#footer">Contate-nos</a>
+    <header class="header">
+      <nav class="navbar">
+        <div class="logo">
+          <img src="./assets/logo.png" alt="Logo do Monitore" />
+          <p>Monitore</p>
+        </div>
+
+        <ul class="menu" id="menu-site">
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#download">Contate-nos</a></li>
+          <li>
+            <button
+              onclick="closeMenu()"
+              class="btn-download-li"
+              id="btn-download"
+            >
+              Baixar Aplicativo Grátis
+            </button>
+          </li>
+        </ul>
+
+        <button onclick="openCloseMenu()" class="menu-btn" id="menu-btn">
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+        </button>
+        <a id="btn-download" class="btn-download" href="#download">
+          Baixar Aplicativo Grátis
+        </a>
       </nav>
     </header>
     <main>
@@ -116,7 +140,9 @@
           na rotina escolar.
         </p>
         <!-- Adicionada a classe btn-secondary para linkar com o CSS -->
-        <a href="#" class="btn-secondary">Começar Agora — É Grátis</a>
+        <a href="#" class="btn-secondary" id="download"
+          >Começar Agora — É Grátis</a
+        >
       </section>
     </main>
     <footer id="footer">
@@ -127,5 +153,44 @@
       </div>
       <p>&copy; 2026 Educa Tech Inova Ltda. Todos os direitos reservados.</p>
     </footer>
+    <script>
+      const menuSite = document.querySelector("#menu-site");
+      const menuIcon = document.querySelector("#menu-icon");
+      const sectionDownload = document.querySelector("section.final-cta");
+
+      function openCloseMenu() {
+        menuSite.classList.toggle("active");
+        menuIcon.classList.toggle("active");
+      }
+
+      function forceCloseMenu() {
+        menuSite.classList.remove("active");
+        menuIcon.classList.remove("active");
+      }
+
+      function closeMenu() {
+        forceCloseMenu();
+
+        if (sectionDownload) {
+          sectionDownload.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+
+      function setupMenuClosingLinks() {
+        const navLinks = document.querySelectorAll("#menu-site li a");
+
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            forceCloseMenu();
+          });
+        });
+      }
+
+      // Inicializa o ouvinte de eventos para todos os links do menu
+      setupMenuClosingLinks();
+    </script>
   </body>
 </html>

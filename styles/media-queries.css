@@ -1,0 +1,93 @@
+@media (max-width: 968px) {
+  .hero {
+    flex-direction: column; /* Joga a imagem para baixo do texto no celular */
+    text-align: center;
+    padding: 8rem 4% 3rem 4%;
+    gap: 3rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .cta-buttons {
+    justify-content: center; /* Centraliza os botões no mobile */
+  }
+
+  .hero-image img {
+    max-height: 400px; /* Diminui o celular em telas menores */
+  }
+}
+
+/* Menu Retrátil */
+
+@media (max-width: 870px) {
+  .btn-download-li {
+    display: block;
+    justify-self: center;
+  }
+  .btn-download {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+    z-index: 999;
+  }
+  .navbar {
+    max-width: 800px;
+  }
+  #menu-icon.active::before {
+    content: "\f00d";
+    transition: 1s ease;
+    color: #fff;
+  }
+
+  .header .menu {
+    background-color: var(--primary-font-color);
+    opacity: 0.98;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    left: -100%;
+    top: 0;
+    text-align: center;
+    padding-top: 80px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  #menu-site.active {
+    left: 0;
+  }
+
+  .header .menu li {
+    display: block;
+  }
+
+  .header .menu li a {
+    color: #fff;
+    display: inline-block;
+    margin: 13px 0;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .final-cta {
+    padding: 4rem 6%;
+  }
+
+  .final-cta h2 {
+    font-size: 1.8rem;
+  }
+
+  .btn-secondary {
+    width: 100%; /* Botão ocupa a largura total no celular para facilitar o toque */
+    padding: 1rem 1.5rem;
+  }
+
+  .footer-links {
+    flex-direction: column; /* Links empilhados no mobile */
+    gap: 1rem;
+  }
+}
